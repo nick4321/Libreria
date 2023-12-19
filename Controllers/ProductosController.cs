@@ -35,16 +35,16 @@ namespace Libreria.Controllers
             ViewData["FiltroNombreProducto"] = String.IsNullOrEmpty(filtro) ? "NombreDescendente" : "";
             ViewData["FiltroDescripcion"] = String.IsNullOrEmpty(filtro) ? "DescripcionDescendente" : "";
             ViewData["FiltroCategoriaProducto"] = String.IsNullOrEmpty(filtro) ? "CategoriaDescendente" : "";
-            ViewData["FiltroPrecio"] = filtro == "NumeroDescendente" ? "NumeroAscendente" : "NumeroDescendente";
+            ViewData["FiltroPrecio"] = filtro == "precioDescendente" ? "precioAscendente" : "precioDescendente";
             ViewData["FiltroStock"] = filtro == "NumeroDescendente" ? "NumeroAscendente" : "NumeroDescendente";
 
             switch (filtro)
             {
                 case "NombreDescendente":
-                    productos = productos.OrderByDescending(producto => producto.NombreProducto);
+                    productos = productos.OrderByDescending(producto => producto.NombreProducto.ToUpper());
                     break;
                 case "DescripcionDescendente":
-                    productos = productos.OrderByDescending(productos => productos.DescripcionProducto);
+                    productos = productos.OrderByDescending(productos => productos.DescripcionProducto.ToUpper());
                     break;
                 case "CategoriaDescendente":
                     productos = productos.OrderByDescending(producto => producto.CategoriaProducto);
@@ -54,6 +54,12 @@ namespace Libreria.Controllers
                     break;
                 case "NumeroDescendente":
                     productos = productos.OrderBy(productos => productos.Stock);
+                    break;
+                case "precioAscendente":
+                    productos = productos.OrderByDescending(productos => productos.Precio);
+                    break;
+                case "precioDescendente":
+                    productos = productos.OrderBy(productos => productos.Precio);
                     break;
                 default:
                     productos = productos.OrderBy(producto => producto.NombreProducto);
