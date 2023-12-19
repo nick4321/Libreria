@@ -257,3 +257,4 @@ C:\Users\nicko\Desktop\FinalHerramientas\Libreria\obj\Debug\net8.0\refint\Librer
 C:\Users\nicko\Desktop\FinalHerramientas\Libreria\obj\Debug\net8.0\Libreria.pdb
 C:\Users\nicko\Desktop\FinalHerramientas\Libreria\obj\Debug\net8.0\Libreria.genruntimeconfig.cache
 C:\Users\nicko\Desktop\FinalHerramientas\Libreria\obj\Debug\net8.0\ref\Libreria.dll
+C:\Users\nicko\Desktop\FinalHerramientas\Libreria\obj\Debug\net8.0\Libreria.sourcelink.json

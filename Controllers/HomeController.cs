@@ -1,8 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Libreria.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libreria.Controllers;
+
 
 public class HomeController : Controller
 {
@@ -18,6 +20,7 @@ public class HomeController : Controller
         return View();
     }
 
+    [Authorize(Roles = "Administrador, Cliente")]
     public IActionResult Privacy()
     {
         return View();
