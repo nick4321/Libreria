@@ -11,6 +11,7 @@ public class Producto
 
     public Categoria CategoriaProducto { get; set; }
 
+    public decimal Precio { get; set; }
     public int Stock { get; set; }
     public string? ImagenProducto { get; set; }
 }

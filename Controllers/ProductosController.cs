@@ -35,6 +35,7 @@ namespace Libreria.Controllers
             ViewData["FiltroNombreProducto"] = String.IsNullOrEmpty(filtro) ? "NombreDescendente" : "";
             ViewData["FiltroDescripcion"] = String.IsNullOrEmpty(filtro) ? "DescripcionDescendente" : "";
             ViewData["FiltroCategoriaProducto"] = String.IsNullOrEmpty(filtro) ? "CategoriaDescendente" : "";
+            ViewData["FiltroPrecio"] = filtro == "NumeroDescendente" ? "NumeroAscendente" : "NumeroDescendente";
             ViewData["FiltroStock"] = filtro == "NumeroDescendente" ? "NumeroAscendente" : "NumeroDescendente";
 
             switch (filtro)
@@ -90,7 +91,7 @@ namespace Libreria.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NombreProducto,DescripcionProducto,CategoriaProducto,Stock,ImagenProducto")] Producto producto)
+        public async Task<IActionResult> Create([Bind("Id,NombreProducto,DescripcionProducto,CategoriaProducto,Precio,Stock,ImagenProducto")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -123,7 +124,7 @@ namespace Libreria.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreProducto,DescripcionProducto,CategoriaProducto,Stock,ImagenProducto")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreProducto,DescripcionProducto,CategoriaProducto,Precio,Stock,ImagenProducto")] Producto producto)
         {
             if (id != producto.Id)
             {

@@ -31,6 +31,11 @@
                     @Html.DisplayNameFor(model => model.CategoriaProducto)
                 </a>
             </th>
+             <th>
+                <a asp-action="" asp-route-filtro="@ViewData["FiltroPrecio"]">
+                    @Html.DisplayNameFor(model => model.Precio)
+                </a>
+            </th>
             <th>
                 <a asp-action="" asp-route-filtro="@ViewData["FiltroStock"]">
                     @Html.DisplayNameFor(model => model.Stock)
@@ -54,6 +59,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CategoriaProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Stock)

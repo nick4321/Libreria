@@ -31,12 +31,17 @@
                 <span asp-validation-for="CategoriaProducto" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Stock" class="control-label"></label>
                 <input asp-for="Stock" class="form-control" />
                 <span asp-validation-for="Stock" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImagenProducto" class="control-label">Foto del Jugador</label>
+                <label asp-for="ImagenProducto" class="control-label"> Foto del Articulo</label>
                 <br>
                 <input type="file" asp-for="ImagenProducto" class="form-control-file" />
                 <span asp-validation-for="ImagenProducto" class="text-danger"></span>
