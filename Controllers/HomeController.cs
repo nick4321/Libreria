@@ -14,7 +14,7 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
+  [Authorize(Roles = "Administrador, Cliente, Empleado")]
     public IActionResult Index()
     {
         return View();
