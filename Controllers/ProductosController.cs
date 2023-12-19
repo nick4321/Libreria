@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libreria.Data;
 using Libreria.Models;
+using Libreria.Services;
 
 namespace Libreria.Controllers
 {
     public class ProductosController : Controller
     {
         private readonly ProductoContext _context;
+        private IProductoService _productoService;  
 
-        public ProductosController(ProductoContext context)
+        public ProductosController(ProductoContext context, IProductoService productoService)
         {
             _context = context;
+            _productoService = productoService;
         }
 
         // GET: Productos
@@ -67,8 +70,7 @@ namespace Libreria.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Producto
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var producto = await _context.Producto.FirstOrDefaultAsync(m => m.Id == id);
             if (producto == null)
             {
                 return NotFound();
@@ -153,15 +155,13 @@ namespace Libreria.Controllers
         }
 
         // GET: Productos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id) //injección de dependencias
         {
-            if (id == null)
+             if (id == null)
             {
                 return NotFound();
             }
-
-            var producto = await _context.Producto
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var producto = _productoService.GetById(id.Value);
             if (producto == null)
             {
                 return NotFound();
@@ -173,21 +173,21 @@ namespace Libreria.Controllers
         // POST: Productos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id) //injección de dependencias
         {
-            var producto = await _context.Producto.FindAsync(id);
+            var producto = _productoService.GetById(id);
             if (producto != null)
             {
-                _context.Producto.Remove(producto);
+                _productoService.Delete(producto);
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductoExists(int id)
         {
-            return _context.Producto.Any(e => e.Id == id);
+          return _productoService.GetById(id) != null;
         }
+
+
     }
 }

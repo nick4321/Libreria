@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Libreria.Data;
 using Microsoft.Extensions.DependencyInjection;
+using Libreria.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProductoContext>(options =>
@@ -18,6 +19,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IProductoService, ProductoService>();
 
 var app = builder.Build();
 
