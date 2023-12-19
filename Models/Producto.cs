@@ -4,7 +4,7 @@ namespace Libreria.Models;
 
 public class Producto
 {
-    public int IdProducto { get; set; }
+    public int Id{ get; set; }
     public string NombreProducto { get; set; }
 
     public string? DescripcionProducto { get; set; }
