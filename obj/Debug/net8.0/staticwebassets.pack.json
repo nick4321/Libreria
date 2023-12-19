@@ -21,6 +21,18 @@
       "PackagePath": "staticwebassets\\imagenes\\Lapicera.jpg"
     },
     {
+      "Id": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\calculadora.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\calculadora.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\harryPotter.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\harryPotter.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\papelDeRegalo.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\papelDeRegalo.jpeg"
+    },
+    {
       "Id": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

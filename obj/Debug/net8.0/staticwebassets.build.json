@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BfQqWjLBwZlQ3mLwwGlqUSsWkePPR38YTffdj2yk1pg=",
+  "Hash": "OVyEmX9Pc9N9FsMqPaLb9JYDY711LRMVWhaFQ0QrlVY=",
   "Source": "Libreria",
   "BasePath": "_content/Libreria",
   "Mode": "Default",
@@ -1233,6 +1233,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\calculadora.jpeg",
+      "SourceId": "Libreria",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\",
+      "BasePath": "_content/Libreria",
+      "RelativePath": "imagenes/calculadora.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\calculadora.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\Cuaderno.jpeg",
       "SourceId": "Libreria",
       "SourceType": "Discovered",
@@ -1252,6 +1271,25 @@
       "OriginalItemSpec": "wwwroot\\imagenes\\Cuaderno.jpeg"
     },
     {
+      "Identity": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\harryPotter.jpeg",
+      "SourceId": "Libreria",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\",
+      "BasePath": "_content/Libreria",
+      "RelativePath": "imagenes/harryPotter.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\harryPotter.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\Lapicera.jpg",
       "SourceId": "Libreria",
       "SourceType": "Discovered",
@@ -1269,6 +1307,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagenes\\Lapicera.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\papelDeRegalo.jpeg",
+      "SourceId": "Libreria",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\",
+      "BasePath": "_content/Libreria",
+      "RelativePath": "imagenes/papelDeRegalo.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\papelDeRegalo.jpeg"
     },
     {
       "Identity": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\js\\site.js",

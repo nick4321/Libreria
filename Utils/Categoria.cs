@@ -4,5 +4,6 @@ public enum Categoria
 {
     Libro,
     Papeleria,
-    Accesorio
+    Accesorio,
+    Tecnología
 }
