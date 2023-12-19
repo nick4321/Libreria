@@ -39,7 +39,7 @@
             @Html.DisplayFor(model => model.Stock)
         </dd>
         <dt class="col-sm-2">
-            <label asp-for="ImagenProducto" class="control-label">Foto del Jugador</label>
+            <label asp-for="ImagenProducto" class="control-label">Foto del Articulo</label>
             <br>
             <img src="../@Model.ImagenProducto" alt="Imagen" width="250" height="250">
         </dt>
@@ -49,6 +49,9 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    @if (User.Identity != null && !User.IsInRole("Cliente"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+    } | 
     <a asp-action="Index">Volver</a>
 </div>
