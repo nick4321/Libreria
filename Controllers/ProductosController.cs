@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Libreria.Data;
 using Libreria.Models;
 using Libreria.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libreria.Controllers
 {
@@ -29,22 +30,28 @@ namespace Libreria.Controllers
 
             if (!String.IsNullOrEmpty(buscar))
             {
-                productos = productos.Where(s => s.NombreProducto != null && s.NombreProducto.ToUpper().Contains(buscar.ToUpper()));
+                productos = productos.Where(s => s.NombreProducto != null && s.NombreProducto.ToLower().Contains(buscar.ToLower()));
             }
 
-            ViewData["FiltroNombreProducto"] = String.IsNullOrEmpty(filtro) ? "NombreDescendente" : "";
-            ViewData["FiltroDescripcion"] = String.IsNullOrEmpty(filtro) ? "DescripcionDescendente" : "";
-            ViewData["FiltroCategoriaProducto"] = String.IsNullOrEmpty(filtro) ? "CategoriaDescendente" : "";
+            ViewData["FiltroNombreProducto"] = String.IsNullOrEmpty(filtro) ? "NombreDescendente" : "NombreAscendente";
+            ViewData["FiltroDescripcion"] = String.IsNullOrEmpty(filtro) ? "DescripcionDescendente" : "DescripcionDescendente";
+            //ViewData["FiltroCategoriaProducto"] = String.IsNullOrEmpty(filtro) ? "CategoriaDescendente" : "";
             ViewData["FiltroPrecio"] = filtro == "precioDescendente" ? "precioAscendente" : "precioDescendente";
             ViewData["FiltroStock"] = filtro == "NumeroDescendente" ? "NumeroAscendente" : "NumeroDescendente";
 
             switch (filtro)
             {
                 case "NombreDescendente":
-                    productos = productos.OrderByDescending(producto => producto.NombreProducto.ToUpper());
+                    productos = productos.OrderByDescending(producto => producto.NombreProducto.ToLower());
+                    break;
+                case "NombreAscendente":
+                    productos = productos.OrderBy(producto => producto.NombreProducto.ToLower());
+                    break;
+                case "DescripcionAscendente":
+                    productos = productos.OrderBy(productos => productos.DescripcionProducto.ToLower());
                     break;
                 case "DescripcionDescendente":
-                    productos = productos.OrderByDescending(productos => productos.DescripcionProducto.ToUpper());
+                    productos = productos.OrderByDescending(productos => productos.DescripcionProducto.ToLower());
                     break;
                 case "CategoriaDescendente":
                     productos = productos.OrderByDescending(producto => producto.CategoriaProducto);
@@ -56,10 +63,10 @@ namespace Libreria.Controllers
                     productos = productos.OrderBy(productos => productos.Stock);
                     break;
                 case "precioAscendente":
-                    productos = productos.OrderByDescending(productos => productos.Precio);
+                    productos = productos.OrderByDescending(productos => (int)productos.Precio);
                     break;
                 case "precioDescendente":
-                    productos = productos.OrderBy(productos => productos.Precio);
+                    productos = productos.OrderBy(productos => (int)productos.Precio);
                     break;
                 default:
                     productos = productos.OrderBy(producto => producto.NombreProducto);
@@ -87,6 +94,7 @@ namespace Libreria.Controllers
         }
 
         // GET: Productos/Create
+         [Authorize(Roles = "Administrador, Empleado")]
         public IActionResult Create()
         {
             return View();
@@ -110,6 +118,7 @@ namespace Libreria.Controllers
         }
 
         // GET: Productos/Edit/5
+         [Authorize(Roles = "Administrador, Empleado")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -130,6 +139,7 @@ namespace Libreria.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+         [Authorize(Roles = "Administrador, Empleado")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,NombreProducto,DescripcionProducto,CategoriaProducto,Precio,Stock,ImagenProducto")] Producto producto)
         {
             if (id != producto.Id)
@@ -162,6 +172,7 @@ namespace Libreria.Controllers
         }
 
         // GET: Productos/Delete/5
+         [Authorize(Roles = "Administrador, Empleado")]
         public async Task<IActionResult> Delete(int? id) //injección de dependencias
         {
              if (id == null)
@@ -180,6 +191,7 @@ namespace Libreria.Controllers
         // POST: Productos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+         [Authorize(Roles = "Administrador, Empleado")]
         public IActionResult DeleteConfirmed(int id) //injección de dependencias
         {
             var producto = _productoService.GetById(id);

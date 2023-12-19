@@ -21,7 +21,7 @@ public class HomeController : Controller
     }
 
 
-    [Authorize(Roles = "Administrador, Cliente")]
+    [Authorize(Roles = "Administrador, Cliente, Empleado")]
     public IActionResult Productos()
     {
         return View();
