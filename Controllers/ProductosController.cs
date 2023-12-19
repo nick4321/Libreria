@@ -20,9 +20,43 @@ namespace Libreria.Controllers
         }
 
         // GET: Productos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string buscar, string filtro)
         {
-            return View(await _context.Producto.ToListAsync());
+            var productos = from producto in _context.Producto select producto;
+
+            if (!String.IsNullOrEmpty(buscar))
+            {
+                productos = productos.Where(s => s.NombreProducto != null && s.NombreProducto.ToUpper().Contains(buscar.ToUpper()));
+            }
+
+            ViewData["FiltroNombreProducto"] = String.IsNullOrEmpty(filtro) ? "NombreDescendente" : "";
+            ViewData["FiltroDescripcion"] = String.IsNullOrEmpty(filtro) ? "DescripcionDescendente" : "";
+            ViewData["FiltroCategoriaProducto"] = String.IsNullOrEmpty(filtro) ? "CategoriaDescendente" : "";
+            ViewData["FiltroStock"] = filtro == "NumeroDescendente" ? "NumeroAscendente" : "NumeroDescendente";
+
+            switch (filtro)
+            {
+                case "NombreDescendente":
+                    productos = productos.OrderByDescending(producto => producto.NombreProducto);
+                    break;
+                case "DescripcionDescendente":
+                    productos = productos.OrderByDescending(productos => productos.DescripcionProducto);
+                    break;
+                case "CategoriaDescendente":
+                    productos = productos.OrderByDescending(producto => producto.CategoriaProducto);
+                    break;
+                case "NumeroAscendente":
+                    productos = productos.OrderByDescending(productos => productos.Stock);
+                    break;
+                case "NumeroDescendente":
+                    productos = productos.OrderBy(productos => productos.Stock);
+                    break;
+                default:
+                    productos = productos.OrderBy(producto => producto.NombreProducto);
+                    break;
+            }
+
+            return View(await productos.ToListAsync());
         }
 
         // GET: Productos/Details/5
@@ -58,6 +92,7 @@ namespace Libreria.Controllers
         {
             if (ModelState.IsValid)
             {
+                producto.ImagenProducto = "../imagenes/" + producto.ImagenProducto;
                 _context.Add(producto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +132,7 @@ namespace Libreria.Controllers
             {
                 try
                 {
+                    producto.ImagenProducto = "../imagenes/" + producto.ImagenProducto;
                     _context.Update(producto);
                     await _context.SaveChangesAsync();
                 }

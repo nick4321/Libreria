@@ -20,8 +20,9 @@ public class HomeController : Controller
         return View();
     }
 
+
     [Authorize(Roles = "Administrador, Cliente")]
-    public IActionResult Privacy()
+    public IActionResult Productos()
     {
         return View();
     }

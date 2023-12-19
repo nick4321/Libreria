@@ -6,23 +6,35 @@
 
 <h1>Listado de Productos</h1>
 
-<p>
-    <a asp-action="Create">Crear Nuevo Producto</a>
-</p>
+@using (Html.BeginForm("", "Productos", FormMethod.Get))
+{
+    <p>
+        Buscar: @Html.TextBox("buscar", null, new { placeholder = "Ingrese un nombre" })
+        <input type="submit" value="Buscar" />
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NombreProducto)
+                <a asp-action="" asp-route-filtro="@ViewData["FiltroNombreProducto"]">
+                    @Html.DisplayNameFor(model => model.NombreProducto)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DescripcionProducto)
+                <a asp-action="" asp-route-filtro="@ViewData["FiltroDescripcion"]">
+                    @Html.DisplayNameFor(model => model.DescripcionProducto)
+                </a>
+            </th>
+            <th> 
+                <a asp-action="" asp-route-filtro="@ViewData["CategoriaDescendente"]">
+                    @Html.DisplayNameFor(model => model.CategoriaProducto)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoriaProducto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stock)
+                <a asp-action="" asp-route-filtro="@ViewData["FiltroStock"]">
+                    @Html.DisplayNameFor(model => model.Stock)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ImagenProducto)
@@ -31,30 +43,31 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescripcionProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoriaProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @* @Html.DisplayFor(modelItem => item.ImagenProducto) *@
-                 <img src="@item.ImagenProducto" alt="Imagen" width="50" height="50">
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    <img src="@item.ImagenProducto" alt="Imagen" width="50" height="50">
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@item.Id">Editar</a>
+                    <a asp-action="Details" class="btn btn-outline-warning" asp-route-id="@item.Id">Detalle</a>
+                    <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<a asp-action="Create" class="btn btn-success">Crear Nuevo Producto</a>

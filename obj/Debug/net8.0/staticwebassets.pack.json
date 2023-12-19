@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\Cuaderno.jpeg",
+      "PackagePath": "staticwebassets\\imagenes\\Cuaderno.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\imagenes\\Lapicera.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\Lapicera.jpg"
+    },
+    {
       "Id": "C:\\Users\\nicko\\Desktop\\FinalHerramientas\\Libreria\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
