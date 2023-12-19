@@ -24,6 +24,7 @@ namespace Libreria.Controllers
         }
 
         // GET: Productos
+        [Authorize(Roles = "Administrador, Empleado, Cliente")]
         public async Task<IActionResult> Index(string buscar, string filtro)
         {
             var productos = from producto in _context.Producto select producto;
